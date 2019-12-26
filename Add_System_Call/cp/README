@@ -1,0 +1,15 @@
+ADD CP SYSTEM CALL IN XV6
+
+Use command vi Makefile.
+Add _cp\ in UPROGS and cp.c in EXTRAS part of Makefile.
+
+Open a terminal in xv6 folder.
+Run make clean.
+Run make.
+Run make qemu.
+
+In qemu use cp command:
+For example:    cp README text1.txt
+		        cat text1.txt
+
+The above command copy contents of README to text1.txt and cat displays ouput in terminal.

@@ -1,0 +1,11 @@
+ADD PWD SYSTEM CALL IN XV6
+
+
+Use command vi Makefile.
+Add _pwd\ in UPROGS and pwd.c in EXTRAS part of Makefile.
+
+Open a terminal in xv6 folder.
+Run make clean.
+Run make.
+Run make qemu.
+

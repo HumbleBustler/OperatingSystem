@@ -1,0 +1,23 @@
+DEBUG YOUR TESTCODE WITH THE XV6 REMOTE DEBUGGER.
+
+First off all we write a c program like for factorial in text editor with .c extension like factorial.c and save it in the xv6 folder. Now open the terminal and go to the directory of xv6 folder.
+
+Write the command $make clean and the $make. 
+Then use the command $vi Makefile or $gedit Makefile and 
+add the filename as _filename\ in UPROGS=\ table and filename.c in EXTRA=\ table.
+
+Now You can execute your code by the command: 
+$make qemu and then $ls and then filename.
+
+To debug the program, open the terminal and after going to the xv6 directory,
+write the command: $make qemu-nox-gdb.
+Then you’ll get a tcp code (Example: 26000).
+In another terminal use the command: $gdb.
+Then 
+(gdb)target remote :26000
+
+Now file _factorial then you’ll get this message: 
+Are you sure you want to change the file? (y or n), Type y
+then set the break point at main by writing: break main
+then to execute line by line, write continue and then n for next line.
+

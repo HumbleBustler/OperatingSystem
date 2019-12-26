@@ -1,0 +1,38 @@
+ADD DATE SYSTEM CALL IN XV6
+
+In sysproc.c file add :
+int sys_date(void)
+{
+  struct rtcdate *r;
+  if(argptr(0, (void*)&r, sizeof(r)) < 0)
+    return -1;
+  cmostime(r);
+  return 0;
+}
+
+
+In usys.S add:
+SYSCALL(date)
+
+In user.h add:
+int date(struct rtcdate *);
+
+In syscall.h add:
+#define SYS_halt   23
+
+In syscall.c add:
+extern int sys_date(void);
+and
+[SYS_date]    sys_date,
+to the list.
+
+Use command vi Makefile.
+Add _newdate\ in UPROGS and newdate.c in EXTRAS part of Makefile.
+
+Open a terminal in xv6 folder.
+Run make clean.
+Run make.
+Run make qemu.
+
+Run command date in qemu to see current date.
+

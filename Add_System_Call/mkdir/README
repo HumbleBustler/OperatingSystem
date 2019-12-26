@@ -1,0 +1,31 @@
+ADD MKDIR SYSTEM CALL IN XV6
+
+
+In sysfile.c add:
+int
+sys_mkdir(void)
+{
+  char *path;
+  struct inode *ip;
+
+  begin_op();
+  if(argstr(0, &path) < 0 || (ip = create(path, T_DIR, 0, 0)) == 0){
+    end_op();
+    return -1;
+  }
+  iunlockput(ip);
+  end_op();
+  return 0;
+}
+
+Use command vi Makefile.
+Add _mkdir\ in UPROGS and mkdir.c in EXTRAS part of Makefile.
+
+Open a terminal in xv6 folder.
+Run make clean.
+Run make.
+Run make qemu.
+
+Run $mkdir testdir
+To create a directory testdir
+Use ls to check for testdir.
